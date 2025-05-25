@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_game")
-public class Games {
+public class Game {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,22 +21,32 @@ public class Games {
 	@Column(name = "game_year")
 	private Integer year;
 	private String genre;
-	private String platform;
+	private String platforms;
+	private Double score;
+	
+	@Column(name = "img_url")
+	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
-	public Games() {
+	public Game() {
 		
 	}
 
-	public Games(Long id, String title, Integer year, String genre, String platform, String shortDescription,
-			String longDescription) {
+	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, 
+			String shortDescription, String longDescription, String imgUrl) {
 		
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.genre = genre;
-		this.platform = platform;
+		this.platforms = platforms;
+		this.score = score;
+		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
 		this.longDescription = longDescription;
 	}
@@ -54,7 +64,7 @@ public class Games {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Games other = (Games) obj;
+		Game other = (Game) obj;
 		return Objects.equals(id, other.id);
 	}
 
@@ -90,18 +100,26 @@ public class Games {
 		this.genre = genre;
 	}
 
-	public String getPlatform() {
-		return platform;
+	public String getPlatforms() {
+		return platforms;
 	}
 
-	public void setPlatform(String platform) {
-		this.platform = platform;
+	public void setPlatforms(String platforms) {
+		this.platforms = platforms;
+	}
+	
+	public Double getScore() {
+		return score;
+	}
+
+	public void setScore(Double score) {
+		this.score = score;
 	}
 
 	public String getShortDescription() {
 		return shortDescription;
 	}
-
+	
 	public void setShortDescription(String shortDescription) {
 		this.shortDescription = shortDescription;
 	}
