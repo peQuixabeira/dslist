@@ -131,5 +131,11 @@ public class Game {
 	public void setLongDescription(String longDescription) {
 		this.longDescription = longDescription;
 	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	
 }
 
